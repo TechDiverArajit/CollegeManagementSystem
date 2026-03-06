@@ -18,6 +18,9 @@ public class ProfessorEntity {
     private Long id;
     private String title;
     private List<SubjectEntity> subjectEntities;
-
+    @ManyToMany
+    @JoinTable(name = "student_professor_info" ,
+             joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "professor_id"))
     private List<StudentEntity> studentEntities;
 }
