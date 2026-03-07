@@ -17,7 +17,10 @@ public class SubjectEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
     private String title;
+
     private ProfessorEntity professorEntity;
+
+    @ManyToMany(mappedBy = "subjectEntities")
     private List<StudentEntity> studentEntities;
 
 }

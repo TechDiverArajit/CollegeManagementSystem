@@ -19,7 +19,12 @@ public class StudentEntity {
     private String name;
     @ManyToMany(mappedBy = "studentEntities")
     private List<ProfessorEntity> professorEntityList;
+    @ManyToMany
+    @JoinTable(name = "student_subject_table" ,
+            joinColumns = @JoinColumn(name = "subject_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<SubjectEntity> subjectEntities;
 
 
 }
+
