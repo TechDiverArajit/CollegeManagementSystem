@@ -15,7 +15,7 @@ import java.util.List;
 public class SubjectDTO {
     private Long id;
     private String title;
-    private ProfessorEntity professorEntity;
+    private ProfessorEntity professor;
     private List<StudentEntity> studentEntities;
 
 }

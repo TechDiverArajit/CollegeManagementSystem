@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/AdmissionRecordController")
+@RequestMapping(path = "/AdmissionRecord")
 public class AdmissionRecordController {
 
     private final AdmissionRecordService admissionRecordService;
@@ -31,4 +31,12 @@ public class AdmissionRecordController {
     public AdmissionRecordDTO createAdmission(@RequestBody AdmissionRecordDTO admissionRecordDTO ){
         return admissionRecordService.createAdmission(admissionRecordDTO);
     }
+
+    @GetMapping(path = "/{admsnId}/AssignStudentIdAdmissionRecord/{studentId}")
+    public AdmissionRecordDTO assignStudentIdToAdmissionRecord(@PathVariable Long admsnId ,
+                                                               @PathVariable Long studentId){
+        return admissionRecordService.assignStudentIdToAdmissionRecord(admsnId , studentId);
+    }
+
+
 }

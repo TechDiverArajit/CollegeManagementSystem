@@ -17,7 +17,8 @@ public class ProfessorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
     private String title;
-    
+
+    @OneToMany(mappedBy = "professor")
     private List<SubjectEntity> subjectEntities;
     @ManyToMany
     @JoinTable(name = "student_professor_info" ,
