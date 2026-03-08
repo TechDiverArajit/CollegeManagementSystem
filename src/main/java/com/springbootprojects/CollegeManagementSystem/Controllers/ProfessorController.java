@@ -30,4 +30,11 @@ public class ProfessorController {
     public ProfessorDTO createProfessor(@RequestBody ProfessorDTO professorDTO ){
         return professorService.createProfessor(professorDTO);
     }
+
+    @GetMapping(path = "/{pId}/assignStudentsToProfessor/{sId}")
+    public ProfessorDTO assignStudentsToProfessor(@PathVariable Long pId ,
+                                        @PathVariable Long sId ){
+        return professorService.assignStudentsToProfessor(pId,sId);
+    }
+
 }

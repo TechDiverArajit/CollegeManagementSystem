@@ -1,5 +1,8 @@
 package com.springbootprojects.CollegeManagementSystem.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,10 +22,12 @@ public class ProfessorEntity {
     private String title;
 
     @OneToMany(mappedBy = "professor")
+    @JsonIgnore
     private List<SubjectEntity> subjectEntities;
     @ManyToMany
     @JoinTable(name = "student_professor_info" ,
-             joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "professor_id"))
+             joinColumns = @JoinColumn(name = "professor_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id"))
+    @JsonIgnore
     private List<StudentEntity> studentEntities;
 }

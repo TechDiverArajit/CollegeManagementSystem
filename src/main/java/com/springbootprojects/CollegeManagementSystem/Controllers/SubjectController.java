@@ -31,4 +31,10 @@ public class SubjectController {
     public SubjectDTO createSubject(@RequestBody SubjectDTO subjectDTO){
         return subjectService.createSubject(subjectDTO);
     }
+
+    @GetMapping(path = "/{subId}/AssignProfessor/{profId}")
+    public SubjectDTO assignProfessorToSubject(@PathVariable Long subId,
+                                              @PathVariable Long profId){
+        return subjectService.assignProfessorToSubject(subId,profId);
+    }
 }

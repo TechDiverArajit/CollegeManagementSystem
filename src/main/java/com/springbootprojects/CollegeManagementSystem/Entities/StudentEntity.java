@@ -1,5 +1,6 @@
 package com.springbootprojects.CollegeManagementSystem.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,11 +19,13 @@ public class StudentEntity {
     private Long id;
     private String name;
     @ManyToMany(mappedBy = "studentEntities")
+    @JsonIgnore
     private List<ProfessorEntity> professorEntityList;
     @ManyToMany
     @JoinTable(name = "student_subject_table" ,
-            joinColumns = @JoinColumn(name = "subject_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id"))
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id"))
+    @JsonIgnore
     private List<SubjectEntity> subjectEntities;
 
 
