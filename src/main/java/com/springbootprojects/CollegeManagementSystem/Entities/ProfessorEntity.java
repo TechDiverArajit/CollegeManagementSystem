@@ -21,10 +21,10 @@ public class ProfessorEntity {
     private Long id;
     private String title;
 
-    @OneToMany(mappedBy = "professor")
+    @OneToMany(mappedBy = "professor" ,fetch = FetchType.LAZY)
     @JsonIgnore
     private List<SubjectEntity> subjectEntities;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "student_professor_info" ,
              joinColumns = @JoinColumn(name = "professor_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
