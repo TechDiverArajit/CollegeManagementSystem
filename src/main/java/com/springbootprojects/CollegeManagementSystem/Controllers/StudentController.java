@@ -37,6 +37,11 @@ public class StudentController {
         return studentService.assignSubjectsToStudents(sId , subjectId);
     }
 
+    @DeleteMapping(path = "/{sId}")
+    public StudentDTO deleteStudent(@PathVariable Long sId){
+        return studentService.deleteStudent(sId);
+    }
+
 
 
 

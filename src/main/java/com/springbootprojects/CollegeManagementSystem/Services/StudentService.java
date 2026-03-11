@@ -53,4 +53,8 @@ public class StudentService {
                 })).orElse(null);
         return modelMapper.map(studentEntity1, StudentDTO.class);
     }
+
+    public StudentDTO deleteStudent(Long sId) {
+
+    }
 }
