@@ -54,7 +54,14 @@ public class StudentService {
         return modelMapper.map(studentEntity1, StudentDTO.class);
     }
 
-    public StudentDTO deleteStudent(Long sId) {
+    public Boolean isExistById(Long id){
+        return studentRepository.existsById(id);
+    }
+
+    public Boolean deleteStudent(Long sId) {
+        Boolean exist = isExistById(sId);
+        if(exist) studentRepository.deleteById(sId);
+        return true;
 
     }
 }
