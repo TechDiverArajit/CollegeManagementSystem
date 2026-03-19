@@ -26,6 +26,7 @@ public class SubjectEntity {
     @JsonIgnore
     private ProfessorEntity professor;
 
+
     @ManyToMany(mappedBy = "subjectEntities")
     @JsonIgnore
     private List<StudentEntity> studentEntities;
