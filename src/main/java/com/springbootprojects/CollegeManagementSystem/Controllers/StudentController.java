@@ -40,7 +40,6 @@ public class StudentController {
     @DeleteMapping(path = "/{sId}")
     public Boolean deleteStudent(@PathVariable Long sId){
         return studentService.deleteStudent(sId);
-
     }
 
 
