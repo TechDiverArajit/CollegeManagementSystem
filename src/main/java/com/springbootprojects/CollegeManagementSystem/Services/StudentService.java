@@ -24,9 +24,9 @@ public class StudentService {
         this.modelMapper = modelMapper;
     }
 
-    public StudentDTO getStudentByID(Long id) {
-        StudentEntity student = studentRepository.findById(id).orElse(null);
-        return modelMapper.map(student,StudentDTO.class);
+    public Optional<StudentDTO> getStudentByID(Long id) {
+        return studentRepository.findById(id).map((studentEntity -> modelMapper.map(studentEntity,StudentDTO.class)));
+
     }
 
     public List<StudentDTO> getAllStudent() {

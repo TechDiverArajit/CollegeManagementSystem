@@ -24,9 +24,10 @@ public class AdmissionRecordService {
         this.modelMapper = modelMapper;
     }
 
-    public AdmissionRecordDTO getAdmissionRecordByID(Long id) {
-        AdmissionRecordEntity admissionRecordEntity = admissionRecordRepository.findById(id).orElse(null);
-        return modelMapper.map(admissionRecordEntity, AdmissionRecordDTO.class);
+    public Optional<AdmissionRecordDTO> getAdmissionRecordByID(Long id) {
+        return admissionRecordRepository.findById(id)
+                .map(admissionRecordEntity1 -> modelMapper.map(admissionRecordEntity1, AdmissionRecordDTO.class));
+
     }
 
     public List<AdmissionRecordDTO> getAllAdmissionRecord() {

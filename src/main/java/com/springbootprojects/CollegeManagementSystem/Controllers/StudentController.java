@@ -1,11 +1,14 @@
 package com.springbootprojects.CollegeManagementSystem.Controllers;
 
 import com.springbootprojects.CollegeManagementSystem.DTOs.StudentDTO;
+import com.springbootprojects.CollegeManagementSystem.Exceptions.ResourceNotFoundException;
 import com.springbootprojects.CollegeManagementSystem.Services.StudentService;
 import lombok.extern.java.Log;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/Student")
@@ -17,8 +20,9 @@ public class StudentController {
     }
 
     @GetMapping(path = "/{id}")
-    public StudentDTO getStudentByID(@PathVariable Long id){
-        return studentService.getStudentByID(id);
+    public ResponseEntity<StudentDTO> getStudentByID(@PathVariable Long id){
+        Optional<StudentDTO> studentDTO = studentService.getStudentByID(id);
+        return studentDTO.map(studentDTO1 -> ResponseEntity.ok(studentDTO1)).orElseThrow(()->new ResourceNotFoundException("Student with id "+id+" not found"));
     }
 
     @GetMapping

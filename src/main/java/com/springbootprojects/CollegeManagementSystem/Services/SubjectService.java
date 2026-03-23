@@ -24,9 +24,9 @@ public class SubjectService {
         this.modelMapper = modelMapper;
     }
 
-    public SubjectDTO getSubjectByID(Long id) {
-        SubjectEntity subjectEntity = subjectRepository.findById(id).orElse(null);
-        return modelMapper.map(subjectEntity,SubjectDTO.class);
+    public Optional<SubjectDTO> getSubjectByID(Long id) {
+        return subjectRepository.findById(id).map(subjectEntity -> modelMapper.map(subjectEntity,SubjectDTO.class));
+
 
     }
 

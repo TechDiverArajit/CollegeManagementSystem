@@ -17,5 +17,4 @@ public class SubjectDTO {
     private String title;
     private ProfessorEntity professor;
     private List<StudentEntity> studentEntities;
-
 }

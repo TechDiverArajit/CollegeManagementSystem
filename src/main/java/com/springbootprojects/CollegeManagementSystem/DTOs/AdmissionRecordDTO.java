@@ -10,7 +10,6 @@ import lombok.*;
 @AllArgsConstructor
 public class AdmissionRecordDTO {
     private Long id;
-
     private Integer fees;
     private StudentEntity student;
 }

@@ -25,9 +25,9 @@ public class ProfessorService {
     }
 
 
-    public ProfessorDTO getProfessorByID(Long id) {
-        ProfessorEntity professor = professorRepository.findById(id).orElse(null);
-        return modelMapper.map(professor,ProfessorDTO.class);
+    public Optional<ProfessorDTO> getProfessorByID(Long id) {
+        return  professorRepository.findById(id).map(professorEntity -> modelMapper.map(professorEntity,ProfessorDTO.class));
+
     }
 
     public List<ProfessorDTO> getAllProfessor() {

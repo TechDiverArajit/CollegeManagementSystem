@@ -3,6 +3,7 @@ package com.springbootprojects.CollegeManagementSystem.DTOs;
 import com.springbootprojects.CollegeManagementSystem.Entities.ProfessorEntity;
 import com.springbootprojects.CollegeManagementSystem.Entities.SubjectEntity;
 import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.List;
 
