@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class StudentDTO {
     private Long id;
+
     private String name;
     private List<ProfessorEntity> professorEntityList;
     private List<SubjectEntity> subjectEntities;
