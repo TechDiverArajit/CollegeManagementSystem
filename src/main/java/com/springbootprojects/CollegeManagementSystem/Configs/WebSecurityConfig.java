@@ -26,12 +26,12 @@ public class WebSecurityConfig {
 
         httpSecurity
                 .authorizeHttpRequests(authorization -> authorization
-                        .requestMatchers("/AdmissionRecord").permitAll()
+                        .requestMatchers("/AdmissionRecord","/auth/**").permitAll()
                         .requestMatchers("/AdmissionRecord/**").hasAnyRole("ADMIN")
                         .anyRequest().authenticated())
                 .csrf(csrfConfig -> csrfConfig.disable())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .formLogin(Customizer.withDefaults());
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+//                .formLogin(Customizer.withDefaults());
 
         return httpSecurity.build();
     }
