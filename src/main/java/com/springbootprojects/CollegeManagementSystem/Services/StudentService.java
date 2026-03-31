@@ -3,9 +3,13 @@ package com.springbootprojects.CollegeManagementSystem.Services;
 import com.springbootprojects.CollegeManagementSystem.DTOs.StudentDTO;
 import com.springbootprojects.CollegeManagementSystem.Entities.StudentEntity;
 import com.springbootprojects.CollegeManagementSystem.Entities.SubjectEntity;
+import com.springbootprojects.CollegeManagementSystem.Entities.User;
 import com.springbootprojects.CollegeManagementSystem.Repositories.StudentRepository;
 import com.springbootprojects.CollegeManagementSystem.Repositories.SubjectRepository;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class StudentService {
     private final StudentRepository studentRepository;
     private final SubjectRepository subjectRepository;
@@ -30,6 +35,8 @@ public class StudentService {
     }
 
     public List<StudentDTO> getAllStudent() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        log.info("user {}",user);
         List<StudentEntity> studentEntities = studentRepository.findAll();
         List<StudentDTO>  studentDTOS = studentEntities.stream().map(students -> modelMapper.map(students,StudentDTO.class)).collect(Collectors.toList());
         return studentDTOS;
